@@ -1,0 +1,12 @@
+$fa-font-path:"../node_modules/font-awesome/fonts";
+@import "../node_modules/font-awesome/scss/font-awesome";
+
+:global {
+  #root {
+    background: #FAFAFA;
+  }
+  .masked-div {
+    pointer-events: none; // 防止任何交互
+    filter: brightness(0.5); // mask效果
+  }
+}

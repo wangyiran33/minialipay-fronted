@@ -1,0 +1,35 @@
+.loadingIndicatorWrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 1000;
+  color: #40a9ff;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 8px 20px;
+  margin-top: -20px;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.25s;
+  :global {
+    .sk-spinner {
+      position: absolute;
+      left: 50%;
+      top: 30px;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .hint-text {
+      color: #999;
+      margin-top: 50px;
+    }
+  }
+}
+
+.fadeInStart {
+  opacity: 0;
+}
+
+.fadeOutStart {
+  opacity: 0;
+}

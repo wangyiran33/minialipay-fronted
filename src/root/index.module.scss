@@ -1,0 +1,12 @@
+.link {
+  margin-top: 24px;
+}
+
+.wrapper {
+  height: 100vh;
+  :global {
+    .am-tabs-pane-wrap {
+      padding: 6px;
+    }
+  }
+}

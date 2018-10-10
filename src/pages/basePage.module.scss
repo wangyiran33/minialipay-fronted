@@ -1,0 +1,23 @@
+$transition-effect-in: cubic-bezier(0, 0.25, 0.25, 1);
+
+.root {
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: left 0.35s $transition-effect-in, top 0.35s $transition-effect-in, filter 0.35s;
+  background: white;
+  z-index: 101;
+  box-shadow: 2px 0 5px 0 black;
+}
+
+.fadeInStart {
+  left: 100vw;
+}
+
+.fadeOutStart {
+  transition: left 0.3s;
+  left: 100vw;
+}
