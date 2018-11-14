@@ -8,6 +8,8 @@ import styles from "./home.module.scss"
 import ExampleService from "../../service/ExampleService";
 import TTSService from "../../native/TTSService";
 import QrService from "../../native/QrService";
+import request from 'superagent';
+import axios from 'axios';
 
 export default class HomePage extends Component {
   render() {
@@ -55,15 +57,18 @@ export default class HomePage extends Component {
 
       <div className={styles.exampleServiceDemo}>
         <Button size="small" onClick={() => {
-          ExampleService.sendExampleRequest("abc")
+          request.get('http://47.101.30.171:8080/greeting')
+          //ExampleService.sendExampleRequest("abc")
             .then(value => {
-              showAlertModal({title: "result", message: JSON.stringify(value)});
+
+              showAlertModal({title: "result", message: value.text});
+              console.log(value.text);
             })
-            .catch(ex => { // 捕获异常
-              console.log("捕获到异常：", ex, "是否启动了后端？");
-            })
+            //.catch(ex => { // 捕获异常
+              //console.log("捕获到异常：", ex, "是否启动了后端？");
+            //})
         }}>
-          <i className="fa fa-send"/> Example Service
+          <i className="fa fa-send"/>前后端连接尝试
         </Button>
       </div>
 

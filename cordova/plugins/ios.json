@@ -1,0 +1,45 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.alipay.minialipay"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "com.alipay.minialipay"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.alipay.minialipay"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.alipay.minialipay"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.alipay.minialipay"
+    },
+    "cordova-plugin-tts": {
+      "PACKAGE_NAME": "com.alipay.minialipay"
+    },
+    "cordova-plugin-fingerprint-aio": {
+      "FACEID_USAGE_DESCRIPTION": " ",
+      "PACKAGE_NAME": "com.alipay.minialipay"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.alipay.minialipay"
+    },
+    "cordova-plugin-telerik-imagepicker": {
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": " ",
+      "PACKAGE_NAME": "com.alipay.minialipay"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-add-swift-support": {
+      "PACKAGE_NAME": "com.alipay.minialipay"
+    }
+  }
+}
