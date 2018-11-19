@@ -5,10 +5,11 @@ import { TabBar } from 'antd-mobile';
 import BillPage from "./tabs/bill"
 import HomePage from "./tabs/home"
 import UserPage from "./tabs/user"
-
+import LoginPage from "./tabs/login"
+// import TestPage from "./tabs/test"
 class Root extends Component {
   state = {
-    selectedTab: 0
+    selectedTab: 3
   };
 
   render() {
@@ -64,6 +65,37 @@ class Root extends Component {
         >
           <UserPage/>
         </TabBar.Item>
+
+        <TabBar.Item
+            title="登陆"
+            key="Login"
+            icon={<i className="fa fa-star-o"/>}
+            selectedIcon={<i className="fa fa-star"/>}
+            selected={this.state.selectedTab === 3}
+            onPress={() => {
+                this.setState({
+                    selectedTab: 3,
+                });
+            }}
+        >
+            <LoginPage/>
+        </TabBar.Item>
+
+        {/*<TabBar.Item*/}
+          {/*title="测试"*/}
+          {/*key="Test"*/}
+          {/*icon={<i className="fa fa-star-o"/>}*/}
+          {/*selectedIcon={<i className="fa fa-star"/>}*/}
+          {/*selected={this.state.selectedTab === 4}*/}
+          {/*onPress={() => {*/}
+              {/*this.setState({*/}
+                  {/*selectedTab: 4,*/}
+              {/*});*/}
+          {/*}}*/}
+      {/*>*/}
+          {/*<TestPage/>*/}
+        {/*</TabBar.Item>*/}
+
       </TabBar>
     </div>);
   }

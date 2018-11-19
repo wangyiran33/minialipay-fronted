@@ -11,6 +11,12 @@ $transition-effect-in: cubic-bezier(0, 0.25, 0.25, 1);
   background: white;
   z-index: 101;
   box-shadow: 2px 0 5px 0 black;
+  :global {
+    .am-navbar + div {
+      height: calc(100vh - 45px);
+      overflow-y: scroll;
+    }
+  }
 }
 
 .fadeInStart {
