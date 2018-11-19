@@ -1,104 +1,58 @@
+
 import React, { Component } from 'react';
-import styles from './index.module.scss';
-import { TabBar } from 'antd-mobile';
-
-import BillPage from "./tabs/bill"
-import HomePage from "./tabs/home"
-import UserPage from "./tabs/user"
-import LoginPage from "./tabs/login"
-// import TestPage from "./tabs/test"
-class Root extends Component {
-  state = {
-    selectedTab: 3
-  };
-
-  render() {
-    return (<div className={styles.wrapper}>
-      <TabBar
-        unselectedTintColor="#949494"
-        tintColor="#33A3F4"
-        barTintColor="white"
-      >
-        <TabBar.Item
-          title="主页"
-          key="Home"
-          icon={<i className="fa fa-star-o"/>}
-          selectedIcon={<i className="fa fa-star"/>}
-          selected={this.state.selectedTab === 0}
-          onPress={() => {
-            this.setState({
-              selectedTab: 0,
-            });
-          }}
-        >
-          <HomePage/>
-        </TabBar.Item>
+//import ReactDOM from 'react-dom';
+import {List, InputItem, WhiteSpace, Button} from 'antd-mobile';
+import PaymentSuccessPage from "../pages/PaymentSuccessPage";
+import HomePage from "../pages/HomePage/HomePage"
+import showPage from "../util/showPage";
+//import { createForm } from 'rc-form';
+import imgURL from '../images/sjtu.png';
+import {lockBackButton, unlockBackButton} from "../util/showPage";
+//import QrService from "../../native/QrService";
+//import showAlertModal from "../../util/showAlertModal";
+import {Flex} from "antd-mobile/lib/flex";
 
 
-        <TabBar.Item
-          title="账单"
-          key="Bill"
-          icon={<i className="fa fa-list"/>}
-          selectedIcon={<i className="fa fa-list"/>}
-          selected={this.state.selectedTab === 1}
-          onPress={() => {
-            this.setState({
-              selectedTab: 1,
-            });
-          }}
-        >
-          <BillPage/>
-        </TabBar.Item>
+export default class LoginPage extends React.Component {
+    componentDidMount() {
+        // this.autoFocusInst.focus();
+    }
+
+    render() {
+        //const { getFieldProps } = this.props.form;
+        return (
+            <div>
+            <WhiteSpace size="lg" />
+            <div align="center">
+                <img src={imgURL } alt="homepageicon" width="50%" height="50%" align="middle"/>
+            </div>
+            <WhiteSpace size="lg" />
+            <WhiteSpace size="lg" />
+            <InputItem
+                //{...getFieldProps('autofocus')}
+                clear
+                placeholder="请输入账号"
+                //ref={el => this.autoFocusInst = el}
+            >账号</InputItem>
+            <WhiteSpace size="lg" />
 
 
-        <TabBar.Item
-          title="用户"
-          key="User"
-          icon={<i className="fa fa-user-o"/>}
-          selectedIcon={<i className="fa fa-user"/>}
-          selected={this.state.selectedTab === 2}
-          onPress={() => {
-            this.setState({
-              selectedTab: 2,
-            });
-          }}
-        >
-          <UserPage/>
-        </TabBar.Item>
+            <InputItem
+                //{...getFieldProps('password')}
+                type="password"
+                placeholder="******"
+            >密码</InputItem>
+            <WhiteSpace size="lg" />
 
-        <TabBar.Item
-            title="登陆"
-            key="Login"
-            icon={<i className="fa fa-star-o"/>}
-            selectedIcon={<i className="fa fa-star"/>}
-            selected={this.state.selectedTab === 3}
-            onPress={() => {
-                this.setState({
-                    selectedTab: 3,
-                });
-            }}
-        >
-            <LoginPage/>
-        </TabBar.Item>
+            <Button type="primary" onClick={() => {
+                showPage(HomePage).then(result => console.log("Page result:", result));
+            }}>
+                登录
+            </Button>
 
-        {/*<TabBar.Item*/}
-          {/*title="测试"*/}
-          {/*key="Test"*/}
-          {/*icon={<i className="fa fa-star-o"/>}*/}
-          {/*selectedIcon={<i className="fa fa-star"/>}*/}
-          {/*selected={this.state.selectedTab === 4}*/}
-          {/*onPress={() => {*/}
-              {/*this.setState({*/}
-                  {/*selectedTab: 4,*/}
-              {/*});*/}
-          {/*}}*/}
-      {/*>*/}
-          {/*<TestPage/>*/}
-        {/*</TabBar.Item>*/}
-
-      </TabBar>
-    </div>);
-  }
+        </div>)
+    }
 }
 
-export default Root;
+//const LoginPageWrapper = createForm()(LoginPage);
+//ReactDOM.render(<LoginPageWrapper />, mountNode);

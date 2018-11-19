@@ -2,15 +2,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {List, InputItem, WhiteSpace, Button} from 'antd-mobile';
-import PaymentSuccessPage from "../pages/PaymentSuccessPage";
 import { createForm } from 'rc-form';
 import imgURL from './../../images/sjtu.png';
 import {lockBackButton, unlockBackButton} from "../../util/showPage";
 import QrService from "../../native/QrService";
 import showAlertModal from "../../util/showAlertModal";
 import {Flex} from "antd-mobile/lib/flex";
-import showPage from "../../util/showPage";
-import PaymentSuccessPage from "../../pages/PaymentSuccessPage";
 
 
 export default class LoginPage extends React.Component {
@@ -43,7 +40,7 @@ export default class LoginPage extends React.Component {
             >密码</InputItem>
             <WhiteSpace size="lg" />
 
-            <Button type="primary" >
+            <Button type="primary">
                 登录
             </Button>
 
