@@ -6,7 +6,7 @@ import PaymentSuccessPage from "../pages/PaymentSuccessPage";
 import HomePage from "../pages/HomePage/HomePage"
 import showPage from "../util/showPage";
 //import { createForm } from 'rc-form';
-import imgURL from '../images/sjtu.png';
+import imgURL from '../images/sjtu22.png';
 import {lockBackButton, unlockBackButton} from "../util/showPage";
 //import QrService from "../../native/QrService";
 //import showAlertModal from "../../util/showAlertModal";
