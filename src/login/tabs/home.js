@@ -3,6 +3,7 @@ import { Button, Flex } from "antd-mobile";
 import showPage, { lockBackButton, unlockBackButton } from "../../util/showPage";
 import PaymentSuccessPage from "../../pages/PaymentSuccessPage";
 import PaymentInformationPage from "../../pages/PaymentInformationPage";
+import BillsDetailPage from "../../pages/BillsDetailPage";
 import showConfirmModal from "../../util/showConfirmModal";
 import showAlertModal from "../../util/showAlertModal";
 import styles from "./home.module.scss"
@@ -16,13 +17,13 @@ import { NoticeBar, WhiteSpace, Icon } from 'antd-mobile';
 export default class MainHomePage extends Component {
   render() {
     return <div>
+    <WhiteSpace size="lg" />
+    <NoticeBar mode="link" onClick={() => {
+      showPage(BillsDetailPage).then(result => console.log("Page result:", result));
+    }}>
+    Notice: 李四给您转账120元
+    </NoticeBar>
       <Flex>
-        <Flex.Item>
-        <WhiteSpace size="lg" />
-        <NoticeBar mode="link" onClick={() => alert('1')}>
-        Notice: The arrival time of incomes and transfers of Yu &#39;E Bao will be delayed during National Day.
-        </NoticeBar>
-        </Flex.Item>
         <Flex.Item>
           <Button type="primary" onClick={() => {
             showPage(PaymentInformationPage).then(result => console.log("Page result:", result));
