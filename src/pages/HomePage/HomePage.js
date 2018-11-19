@@ -5,7 +5,7 @@ import { Result } from "antd-mobile";
 import BillPage from "../../login/tabs/bill"
 //import HomePage from "./tabs/home"
 import UserPage from "../../login/tabs/user"
-import createPage from "../basePage";
+import {createPageWithoutBack} from "../basePage";
 //import LoginPage from "./tabs/login"
 // import TestPage from "./tabs/test"
 
@@ -15,7 +15,7 @@ export default class HomePage extends Component {
     };
 
     render() {
-        return createPage.call(this,<div className={styles.wrapper}>
+        return createPageWithoutBack.call(this,<div className={styles.wrapper}>
 
                 <TabBar
                     unselectedTintColor="#949494"

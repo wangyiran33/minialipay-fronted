@@ -91,3 +91,51 @@ export default function createPage(jsx) {
 
   </BasePage>
 }
+
+export  function createPageWithoutBack(jsx) {
+    let fadeOut;
+
+    let refCallback = (ref) => {
+        if (ref) {
+            fadeOut = () => {
+                return new Promise(function (resolve) {
+                    ref.setState({
+                        phase: 2
+                    }, () => {
+                        setTimeout(() => {
+                            resolve();
+                        }, animationLength);
+                    });
+                });
+            };
+        }
+    };
+
+    this.close = (...args) => {
+        if (!args.length) {
+            this.props.close(null, animationLength);
+        } else {
+            this.props.close(...args, animationLength);
+        }
+        fadeOut();
+    };
+
+    // 仅供 NavBar / overrideNavBar 使用，不得 Override
+    this.onLeftClick = () => {
+        return (this.onBackClick || (() => this.close(null)))();
+    };
+
+    return <BasePage ref={refCallback}>
+        {this.props.overrideNavBar ? this.props.overrideNavBar(this) : <NavBar
+            mode={this.navbarMode || "light"}
+            //icon={<Icon type="left"/>}
+            //onLeftClick={this.onLeftClick}
+            className={this.props.navBarClass || ""}
+        >
+            {this.pageTitle}
+        </NavBar>}
+
+        {jsx}
+
+    </BasePage>
+}
