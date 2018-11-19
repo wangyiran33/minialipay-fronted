@@ -11,12 +11,18 @@ import TTSService from "../../native/TTSService";
 import QrService from "../../native/QrService";
 import request from 'superagent';
 import axios from 'axios';
+import { NoticeBar, WhiteSpace, Icon } from 'antd-mobile';
 
 export default class MainHomePage extends Component {
   render() {
     return <div>
       <Flex>
-
+        <Flex.Item>
+        <WhiteSpace size="lg" />
+        <NoticeBar mode="link" onClick={() => alert('1')}>
+        Notice: The arrival time of incomes and transfers of Yu &#39;E Bao will be delayed during National Day.
+        </NoticeBar>
+        </Flex.Item>
         <Flex.Item>
           <Button type="primary" onClick={() => {
             showPage(PaymentInformationPage).then(result => console.log("Page result:", result));
