@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Flex } from "antd-mobile";
 import showPage, { lockBackButton, unlockBackButton } from "../../util/showPage";
 import PaymentSuccessPage from "../../pages/PaymentSuccessPage";
+import PaymentInformationPage from "../../pages/PaymentInformationPage";
 import showConfirmModal from "../../util/showConfirmModal";
 import showAlertModal from "../../util/showAlertModal";
 import styles from "./home.module.scss"
@@ -11,17 +12,14 @@ import QrService from "../../native/QrService";
 import request from 'superagent';
 import axios from 'axios';
 
-export default class HomePage extends Component {
+export default class MainHomePage extends Component {
   render() {
     return <div>
       <Flex>
 
         <Flex.Item>
           <Button type="primary" onClick={() => {
-            showPage(PaymentSuccessPage, {
-              actualPrice: 10000,
-              price: 12000
-            }).then(result => console.log("Page result:", result));
+            showPage(PaymentInformationPage).then(result => console.log("Page result:", result));
           }}>
             <i className="fa fa-rmb"/> Pay
           </Button>

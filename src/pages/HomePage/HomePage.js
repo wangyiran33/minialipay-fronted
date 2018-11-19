@@ -3,7 +3,7 @@ import styles from '../../root/index.module.scss';
 import { TabBar } from 'antd-mobile';
 import { Result } from "antd-mobile";
 import BillPage from "../../login/tabs/bill"
-//import HomePage from "./tabs/home"
+import MainHomePage from "../../login/tabs/home"
 import UserPage from "../../login/tabs/user"
 import {createPageWithoutBack} from "../basePage";
 //import LoginPage from "./tabs/login"
@@ -11,7 +11,7 @@ import {createPageWithoutBack} from "../basePage";
 
 export default class HomePage extends Component {
     state = {
-        selectedTab: 1
+        selectedTab: 0
     };
 
     render() {
@@ -22,6 +22,20 @@ export default class HomePage extends Component {
                     tintColor="#33A3F4"
                     barTintColor="white"
                 >
+                <TabBar.Item
+                    title="主页"
+                    key="home"
+                    icon={<i className="fa fa-home"/>}
+                    selectedIcon={<i className="fa fa-home"/>}
+                    selected={this.state.selectedTab === 0}
+                    onPress={() => {
+                        this.setState({
+                            selectedTab: 0,
+                        });
+                    }}
+                >
+                <MainHomePage/>
+                </TabBar.Item>
                     <TabBar.Item
                         title="账单"
                         key="Bill"
@@ -49,30 +63,11 @@ export default class HomePage extends Component {
                             });
                         }}
                     >
-                        <UserPage/>
+                    <UserPage/>
                     </TabBar.Item>
-
-
-
-                    {/*<TabBar.Item*/}
-                    {/*title="测试"*/}
-                    {/*key="Test"*/}
-                    {/*icon={<i className="fa fa-star-o"/>}*/}
-                    {/*selectedIcon={<i className="fa fa-star"/>}*/}
-                    {/*selected={this.state.selectedTab === 4}*/}
-                    {/*onPress={() => {*/}
-                    {/*this.setState({*/}
-                    {/*selectedTab: 4,*/}
-                    {/*});*/}
-                    {/*}}*/}
-                    {/*>*/}
-                    {/*<TestPage/>*/}
-                    {/*</TabBar.Item>*/}
 
                 </TabBar>
 
         </div>);
     }
 }
-
-
