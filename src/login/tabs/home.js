@@ -17,7 +17,6 @@ import { NoticeBar, WhiteSpace, Icon } from 'antd-mobile';
 export default class MainHomePage extends Component {
   render() {
     return <div>
-    <WhiteSpace size="lg" />
     <NoticeBar mode="link" onClick={() => {
       showPage(BillsDetailPage).then(result => console.log("Page result:", result));
     }}>
