@@ -8,20 +8,22 @@ import HomePage from "../../pages/HomePage/HomePage";
 
 const Item = List.Item;
 const Brief = Item.Brief;
+//const aa = "123333333";
 
 export default class UserPage extends Component {
 
 
 
   render() {
+      let uname = "hahaha";
       $.ajax(
           {
               type:"get",
-              url:"http://192.168.1.114:8080/user",
+              url:"http://47.101.4.126:80/user",
               headers:{'Authorization':Global.headerToken},
               success: function (result) {
                   console.log(result);
-                  let uname = result.data.userEntity.username;
+                  uname = result.data.userEntity.username;
                   let ubalance = result.data.userEntity.balance;
                   let ued = result.data.userEntity.email_address;
                   let upm = result.data.userEntity.phone_num;
@@ -29,7 +31,7 @@ export default class UserPage extends Component {
                   //let tokenU = result.data.tokenEntity.uid;
                   //let tokenT = result.data.tokenEntity.token;
                   //let tokenUT = tokenU + tokenT;
-                  //console.log(tokenUT);
+                  //console.log(uname);
                   //showPage(HomePage,{tokenheader:tokenUT}).then(result => console.log("Page result:", result));
               },error:function(error){
                   console.log(error);
@@ -46,7 +48,7 @@ export default class UserPage extends Component {
 
         <List >
             <InputItem
-                value="12312"
+                value={uname}
                 editable={false}
             >手机号</InputItem>
             <InputItem
