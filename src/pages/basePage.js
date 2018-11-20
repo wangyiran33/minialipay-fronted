@@ -126,15 +126,6 @@ export  function createPageWithoutBack(jsx) {
     };
 
     return <BasePage ref={refCallback}>
-        {this.props.overrideNavBar ? this.props.overrideNavBar(this) : <NavBar
-            mode={this.navbarMode || "light"}
-            //icon={<Icon type="left"/>}
-            //onLeftClick={this.onLeftClick}
-            className={this.props.navBarClass || ""}
-        >
-            {this.pageTitle}
-        </NavBar>}
-
         {jsx}
 
     </BasePage>
