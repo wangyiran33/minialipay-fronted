@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import {List, InputItem, WhiteSpace, Button} from 'antd-mobile';
 import PaymentSuccessPage from "../pages/PaymentSuccessPage";
 import HomePage from "../pages/HomePage/HomePage"
+import RegisterPage from "../pages/RegisterPage/RegisterPage"
 import showPage from "../util/showPage";
 //import { createForm } from 'rc-form';
 import imgURL from '../images/sjtu22.png';
@@ -14,6 +15,8 @@ import {Flex} from "antd-mobile/lib/flex";
 
 
 export default class LoginPage extends React.Component {
+
+    pageTitle = "RegisterPage";
     componentDidMount() {
         // this.autoFocusInst.focus();
     }
@@ -48,6 +51,13 @@ export default class LoginPage extends React.Component {
                 showPage(HomePage).then(result => console.log("Page result:", result));
             }}>
                 登录
+            </Button>
+            <WhiteSpace size="lg" />
+
+            <Button type="primary" onClick={() => {
+                showPage(RegisterPage).then(result => console.log("Page result:", result));
+            }}>
+                注册
             </Button>
 
         </div>)
