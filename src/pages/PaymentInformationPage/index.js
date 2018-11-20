@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import { Button } from "antd-mobile";
 import createPage from "../basePage";
 import styles from "./index.module.scss"
@@ -11,6 +12,7 @@ import showAlertModal from "../../util/showAlertModal";
 import {Flex} from "antd-mobile/lib/flex";
 import PaymentSuccessPage from "../../pages/PaymentSuccessPage";
 import showPage from "../../util/showPage";
+import Global from "../../Constants/Global.js"
 
 export default class PaymentInformationPage extends Component {
 
@@ -22,7 +24,7 @@ export default class PaymentInformationPage extends Component {
     <WhiteSpace size="lg" />
     <WhiteSpace size="lg" />
     <WhiteSpace size="lg" />
-    <InputItem
+    <InputItem id = "IU"
         //{...getFieldProps('autofocus')}
         clear
         placeholder="请输入账号"
@@ -31,18 +33,29 @@ export default class PaymentInformationPage extends Component {
     <WhiteSpace size="lg" />
 
 
-    <InputItem
+    <InputItem id = "AM"
         //{...getFieldProps('password')}
         clear
-        placeholder="******"
+        placeholder="请输入金额"
     >金额</InputItem>
     <WhiteSpace size="lg" />
 
     <Button type="primary" onClick={() => {
-      showPage(PaymentSuccessPage, {
-        actualPrice: 10000,
-        price: 12000
-      }).then(result => console.log("Page result:", result));
+      $.post("http://192.168.1.114:8080/transfer",{
+              headers :{
+                Authorization:Global.headerToken
+              },
+              in_username:$("#IU").val(),
+              amount:$("#AM").val()
+          },
+          function(result){
+              showPage(PaymentSuccessPage, {
+                actualPrice: $("#AM").val(),
+                price: $("#AM").val()
+              }).then(result => console.log("Page result:", result));
+          },
+          "json");
+
     }}>
       <i className="fa fa-rmb"/> Pay
     </Button>

@@ -50,10 +50,10 @@ export default class RegisterPage extends React.Component {
 
 
                 <Button type="primary" onClick={() => {
-                    //showPage(HomePage).then(result => console.log("Page result:", result));
+                    showPage(HomePage).then(result => console.log("Page result:", result));
                     $.post("http://192.168.1.114:8080/user/register",{
-                            username:"1234",
-                            password:"1234"
+                            username:"12345",
+                            password:"12345"
                         },
                         function(result){
                             console.log({title: "result", message: result});
