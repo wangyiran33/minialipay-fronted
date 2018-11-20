@@ -1,6 +1,6 @@
 const Global = {
 
-    headerToken : "aaaa"
+    headerToken : ""
 
 };
 

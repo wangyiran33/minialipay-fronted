@@ -65,7 +65,7 @@ export default class LoginPage extends React.Component {
                      //beforeSend: function (XMLHttpRequest)
                     //XMLHttpRequest.setRequestHeader("token", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOD.....")
                     success: function (result) {
-                        //console.log(result);
+                        console.log(result);
                         let tokenU = result.data.tokenEntity.uid;
                         let tokenT = result.data.tokenEntity.token;
                         let tokenUT = tokenU + tokenT;
