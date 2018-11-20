@@ -1,5 +1,7 @@
 
 import React, { Component } from 'react';
+
+import $ from 'jquery';
 //import ReactDOM from 'react-dom';
 import {List, InputItem, WhiteSpace, Button} from 'antd-mobile';
 //import PaymentSuccessPage from "../pages/PaymentSuccessPage";
@@ -12,6 +14,7 @@ import createPage from "../basePage";
 //import QrService from "../../native/QrService";
 //import showAlertModal from "../../util/showAlertModal";
 import {Flex} from "antd-mobile/lib/flex";
+import showAlertModal from "../../util/showAlertModal";
 
 
 export default class RegisterPage extends React.Component {
@@ -47,7 +50,16 @@ export default class RegisterPage extends React.Component {
 
 
                 <Button type="primary" onClick={() => {
-                    showPage(HomePage).then(result => console.log("Page result:", result));
+                    //showPage(HomePage).then(result => console.log("Page result:", result));
+                    $.post("http://192.168.1.114:8080/user/register",{
+                            username:"1234",
+                            password:"1234"
+                        },
+                        function(result){
+                            console.log({title: "result", message: result});
+                            //alert("数据: \n" + data + "\n状态: " + status);
+                        },
+                        "json");
                 }}>
                     注册
                 </Button>
