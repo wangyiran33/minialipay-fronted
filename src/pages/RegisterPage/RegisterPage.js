@@ -67,18 +67,7 @@ export default class RegisterPage extends React.Component {
 
 
                 <Button type="primary" onClick={() => {
-<<<<<<< HEAD
-                    showPage(HomePage).then(result => console.log("Page result:", result));
-                    $.post("http://192.168.1.114:8080/user/register",{
-                            username:"12345",
-                            password:"12345"
-                        },
-                        function(result){
-                            console.log({title: "result", message: result});
-                            //alert("数据: \n" + data + "\n状态: " + status);
-                        },
-                        "json");
-=======
+
                     console.log($("#PWW").val());
                     console.log($("#PM").val());
                     console.log($("#EM").val());
@@ -108,7 +97,7 @@ export default class RegisterPage extends React.Component {
 
                         }
                     )
->>>>>>> 4c1c38473c830f9f8232f3658c0bc8168d6193c1
+
                 }}>
                     注册
                 </Button>

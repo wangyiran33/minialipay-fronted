@@ -46,7 +46,7 @@ export default class UserPage extends Component {
 
         <List >
             <InputItem
-                value=upm
+                value="12312"
                 editable={false}
             >手机号</InputItem>
             <InputItem
