@@ -19,9 +19,10 @@ export default class HomePage extends Component {
 
 
     render() {
+        let PageToken = this.props.tokenheader;
+        console.log(PageToken);
         return createPageWithoutBack.call(this,<div className={styles.wrapper}>
-            let PageToken = this.props.tokenheader;
-            alert(PageToken);
+
                 <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
