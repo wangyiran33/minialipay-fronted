@@ -52,21 +52,32 @@ export default class LoginPage extends React.Component {
 
 
             <Button type="primary" onClick={() => {
-                //alert($("#UN").val());
-               // let tokenUT = "";
-                $.post("http://192.168.1.114:8080/tokens/login",{
+                //console.log($("#UN").val());
+                $.ajax({
+                    type:"post",
+                    url:"http://192.168.1.114:8080/tokens/login",
+                    data: {
                         username:$("#UN").val(),
                         password:$("#PW").val()
                     },
-                    function(result){
+                    //contentType:"json",
+
+                     //beforeSend: function (XMLHttpRequest)
+                    //XMLHttpRequest.setRequestHeader("token", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOD.....")
+                    success: function (result) {
+                        //console.log(result);
                         let tokenU = result.data.tokenEntity.uid;
                         let tokenT = result.data.tokenEntity.token;
                         let tokenUT = tokenU + tokenT;
                         console.log(tokenUT);
                         showPage(HomePage,{tokenheader:tokenUT}).then(result => console.log("Page result:", result));
-                        //alert("数据: \n" + data + "\n状态: " + status);
-                    },
-                    "json");
+                    },error:function(error){
+                        console.log(error);
+                    }
+
+                    }
+                )
+
             }}>
                 登录
             </Button>
