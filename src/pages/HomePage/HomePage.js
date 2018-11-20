@@ -6,9 +6,13 @@ import BillPage from "../../login/tabs/bill"
 import MainHomePage from "../../login/tabs/home"
 import UserPage from "../../login/tabs/user"
 import {createPageWithoutBack} from "../basePage";
+import Global from "../../Constants/Global.js"
 import $ from "jquery";
 //import LoginPage from "./tabs/login"
 // import TestPage from "./tabs/test"
+
+ //let PageToken = this.props.tokenheader;
+//global.PageToken = "123";
 
 export default class HomePage extends Component {
     state = {
@@ -16,11 +20,10 @@ export default class HomePage extends Component {
     };
 
 
-
-
     render() {
         let PageToken = this.props.tokenheader;
-        console.log(PageToken);
+        Global.headerToken = PageToken;
+        console.log(Global.headerToken);
         return createPageWithoutBack.call(this,<div className={styles.wrapper}>
 
                 <TabBar
@@ -40,7 +43,7 @@ export default class HomePage extends Component {
                         });
                     }}
                 >
-                <MainHomePage/>
+                <MainHomePage />
                 </TabBar.Item>
                     <TabBar.Item
                         title="账单"
