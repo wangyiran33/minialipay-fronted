@@ -53,7 +53,7 @@ export default class LoginPage extends React.Component {
 
             <Button type="primary" onClick={() => {
                 //alert($("#UN").val());
-                let tokenUT = ""
+               // let tokenUT = "";
                 $.post("http://192.168.1.114:8080/tokens/login",{
                         username:$("#UN").val(),
                         password:$("#PW").val()
@@ -61,12 +61,12 @@ export default class LoginPage extends React.Component {
                     function(result){
                         let tokenU = result.data.tokenEntity.uid;
                         let tokenT = result.data.tokenEntity.token;
-                        tokenUT = tokenU + tokenT;
+                        let tokenUT = tokenU + tokenT;
                         console.log(tokenUT);
+                        showPage(HomePage,{tokenheader:tokenUT}).then(result => console.log("Page result:", result));
                         //alert("数据: \n" + data + "\n状态: " + status);
                     },
                     "json");
-                showPage(HomePage,{tokenheader:tokenUT}).then(result => console.log("Page result:", result));
             }}>
                 登录
             </Button>
