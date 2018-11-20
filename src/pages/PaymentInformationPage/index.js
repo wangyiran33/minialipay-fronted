@@ -16,7 +16,7 @@ import Global from "../../Constants/Global.js"
 
 export default class PaymentInformationPage extends Component {
 
-  pageTitle = "PaymentInformationPage";
+  pageTitle = "填写支付信息";
 
   render() {
     return createPage.call(this,
@@ -41,20 +41,28 @@ export default class PaymentInformationPage extends Component {
     <WhiteSpace size="lg" />
 
     <Button type="primary" onClick={() => {
-      $.post("http://192.168.1.114:8080/transfer",{
+          $.ajax({
+              type:"post",
+              url:"http://192.168.1.114:8080/transfer",
               headers :{
-                Authorization:Global.headerToken
+                'Authorization':Global.headerToken
               },
-              in_username:$("#IU").val(),
-              amount:$("#AM").val()
-          },
-          function(result){
-              showPage(PaymentSuccessPage, {
-                actualPrice: $("#AM").val(),
-                price: $("#AM").val()
-              }).then(result => console.log("Page result:", result));
-          },
-          "json");
+              data: {
+                in_username:$("#IU").val(),
+                amount:$("#AM").val()
+              },
+
+              success: function (result) {
+                  console.log($("#IU").val());
+                  console.log($("#AM").val());
+                  console.log(result);
+                  //showPage(PaymentSuccessPage, {
+                    //actualPrice: $("#AM").val(),
+                    //price: $("#AM").val()
+                  //}).then(result => console.log("Page result:", result));
+              },
+              error:function(error){console.log("no result");}
+          })
 
     }}>
       <i className="fa fa-rmb"/> Pay
