@@ -13,9 +13,13 @@ import QrService from "../../native/QrService";
 import request from 'superagent';
 import axios from 'axios';
 import { NoticeBar, WhiteSpace, Icon } from 'antd-mobile';
+import "../../pages/HomePage/HomePage.js"
+import Global from "../../Constants/Global.js"
+import HomePage from "../../pages/HomePage/HomePage";
 
 export default class MainHomePage extends Component {
   render() {
+    console.log(Global.headerToken);
     return <div>
     <WhiteSpace size="lg" />
     <NoticeBar mode="link" onClick={() => {
