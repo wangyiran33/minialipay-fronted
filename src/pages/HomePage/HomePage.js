@@ -6,6 +6,7 @@ import BillPage from "../../login/tabs/bill"
 import MainHomePage from "../../login/tabs/home"
 import UserPage from "../../login/tabs/user"
 import {createPageWithoutBack} from "../basePage";
+import $ from "jquery";
 //import LoginPage from "./tabs/login"
 // import TestPage from "./tabs/test"
 
@@ -14,9 +15,13 @@ export default class HomePage extends Component {
         selectedTab: 0
     };
 
+
+
+
     render() {
         return createPageWithoutBack.call(this,<div className={styles.wrapper}>
-
+            let PageToken = this.props.tokenheader;
+            alert(PageToken);
                 <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
