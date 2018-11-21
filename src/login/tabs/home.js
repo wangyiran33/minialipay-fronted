@@ -18,7 +18,8 @@ import Global from "../../Constants/Global.js"
 import HomePage from "../../pages/HomePage/HomePage";
 import imgURL1 from "../../images/1.jpeg";
 import imgURL from "../../images/sjtu23.png";
-
+import $ from "jquery";
+let numbers;
 
 export default class MainHomePage extends Component {
     state = {
@@ -36,7 +37,30 @@ export default class MainHomePage extends Component {
     }
 
   render() {
-    console.log(Global.headerToken);
+    let temp;
+
+    $.ajax(
+        {
+            type:"post",
+            url:"http://47.101.4.126:80/bill/trans",
+            async:false,
+            headers:{'Authorization':Global.headerToken},
+            success: function (result) {
+                let tlength = result.data.content.length;
+                temp = result.data.content;
+                console.log(result.data.content[0]);
+                numbers = temp[0];
+
+            },error:function(error){
+                console.log(error);
+            }
+        }
+    )
+    console.log(temp[0].trans_cost);
+    let n = "Notice:"+temp[0].trans_obj_name+"给您转账"+temp[0].trans_cost+"元";
+    if(temp[0].trans_type == 0){
+      n = "Notice:您给"+temp[0].trans_obj_name+"转账"+temp[0].trans_cost+"元";
+    }
     return <div>
     <div align="center">
         <img src={imgURL } alt="homepageicon" width="50%" height="50%" align="middle"/>
@@ -45,7 +69,7 @@ export default class MainHomePage extends Component {
     <NoticeBar mode="link" onClick={() => {
       showPage(BillsDetailPage).then(result => console.log("Page result:", result));
     }}>
-    Notice: 李四给您转账120元
+    {n}
     </NoticeBar>
       <Flex>
         <Flex.Item>

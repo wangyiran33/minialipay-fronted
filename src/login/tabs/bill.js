@@ -8,17 +8,8 @@ const Brief = Item.Brief;
 let numbers = [];
 
 export default class BillPage extends Component {
-  state = {
-   data: ['1', '2', '3']
- }
 
   render() {
-      let tcost = "";
-      let tname = "";
-      let tyear = "";
-      let tmonth = "";
-      let tday = "";
-      let ttype = "";
       let temp;
 
       $.ajax(
@@ -32,16 +23,7 @@ export default class BillPage extends Component {
                   temp = result.data.content;
                   console.log(result.data.content[0]);
                   numbers = temp;
-                  //uname = result.data.userEntity.username;
-                 // ubalance = result.data.userEntity.balance;
-                  //ued = result.data.userEntity.email_address;
-                 // upm = result.data.userEntity.phone_num;
-                 // console.log(uname + ubalance + ued + upm);
-                  //let tokenU = result.data.tokenEntity.uid;
-                  //let tokenT = result.data.tokenEntity.token;
-                  //let tokenUT = tokenU + tokenT;
-                  //console.log(uname);
-                  //showPage(HomePage,{tokenheader:tokenUT}).then(result => console.log("Page result:", result));
+
               },error:function(error){
                   console.log(error);
               }
