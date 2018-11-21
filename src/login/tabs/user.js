@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { List,InputItem,WhiteSpace } from 'antd-mobile';
+import {List, InputItem, WhiteSpace, Button} from 'antd-mobile';
 import imgURL from "../../images/1.jpeg";
 import $ from "jquery";
 import Global from "../../Constants/Global.js"
 import showPage from "../../util/showPage";
 import HomePage from "../../pages/HomePage/HomePage";
+import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -67,6 +68,12 @@ export default class UserPage extends Component {
                 editable={false}
             >电子邮箱</InputItem>
         </List>
+
+        <Button type="primary" onClick={() => {
+            this.setState()
+        }}>注销
+        </Button>
+
 
     </div>);
   }

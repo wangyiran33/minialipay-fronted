@@ -3,7 +3,7 @@ import {Button, Carousel, Flex, WingBlank} from "antd-mobile";
 import showPage, { lockBackButton, unlockBackButton } from "../../util/showPage";
 import PaymentSuccessPage from "../../pages/PaymentSuccessPage";
 import PaymentInformationPage from "../../pages/PaymentInformationPage";
-import BillsDetailPage from "../../pages/BillsDetailPage";
+import BillPage from "../../pages/BillsDetailPage";
 import showConfirmModal from "../../util/showConfirmModal";
 import showAlertModal from "../../util/showAlertModal";
 import styles from "./home.module.scss"
@@ -49,25 +49,31 @@ export default class MainHomePage extends Component {
                 let tlength = result.data.content.length;
                 temp = result.data.content;
                 console.log(result.data.content[0]);
-                numbers = temp[0];
+                if(temp.length >0)
+                    numbers = temp[0];
 
             },error:function(error){
                 console.log(error);
             }
         }
     )
-    console.log(temp[0].trans_cost);
-    let n = "Notice:"+temp[0].trans_obj_name+"给您转账"+temp[0].trans_cost+"元";
-    if(temp[0].trans_type == 0){
+    let n = "";
+    if (temp.length == 0){
+        n = "Notice:还没有转账记录";
+    }
+    else if(temp[0].trans_type == 0){
       n = "Notice:您给"+temp[0].trans_obj_name+"转账"+temp[0].trans_cost+"元";
     }
+    else{
+          n = "Notice:"+temp[0].trans_name+"给您转账"+temp[0].trans_cost+"元";
+      }
     return <div>
     <div align="center">
         <img src={imgURL } alt="homepageicon" width="50%" height="50%" align="middle"/>
     </div>
 
     <NoticeBar mode="link" onClick={() => {
-      showPage(BillsDetailPage).then(result => console.log("Page result:", result));
+      showPage(BillPage).then(result => console.log("Page result:", result));
     }}>
     {n}
     </NoticeBar>
