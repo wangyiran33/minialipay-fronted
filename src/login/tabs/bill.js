@@ -56,7 +56,7 @@ export default class BillPage extends Component {
             numbers.map(function(item,index){
               console.log(item.trans_remarks)
               return <Item key = {index} extra={item.trans_type==0?-item.trans_cost:item.trans_cost} align="top" thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png" multipleLine>
-                  {item.trans_obj_name} <Brief>{item.trans_year}-{item.trans_month}-{item.trans_day}</Brief>
+                  {item.trans_obj_name} <Brief>{item.trans_year}-{item.trans_month}-{item.trans_day} {item.trans_time}</Brief>
               </Item>
             })
 

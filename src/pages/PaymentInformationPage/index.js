@@ -36,6 +36,8 @@ export default class PaymentInformationPage extends Component {
     <InputItem id = "AM"
         //{...getFieldProps('password')}
         clear
+        type = "money"
+        moneyKeyboardAlign="left"
         placeholder="请输入金额"
     >金额</InputItem>
     <WhiteSpace size="lg" />
