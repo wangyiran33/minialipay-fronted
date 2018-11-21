@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Flex } from "antd-mobile";
+import {Button, Carousel, Flex, WingBlank} from "antd-mobile";
 import showPage, { lockBackButton, unlockBackButton } from "../../util/showPage";
 import PaymentSuccessPage from "../../pages/PaymentSuccessPage";
 import PaymentInformationPage from "../../pages/PaymentInformationPage";
@@ -16,11 +16,32 @@ import { NoticeBar, WhiteSpace, Icon } from 'antd-mobile';
 import "../../pages/HomePage/HomePage.js"
 import Global from "../../Constants/Global.js"
 import HomePage from "../../pages/HomePage/HomePage";
+import imgURL1 from "../../images/1.jpeg";
+import imgURL from "../../images/sjtu23.png";
+
 
 export default class MainHomePage extends Component {
+    state = {
+        data: ['1', '2', '3'],
+        imgHeight: 176,
+    }
+    //pageTitle = "RegisterPage";
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({
+                data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
+            });
+        }, 100);
+        // this.autoFocusInst.focus();
+    }
+
   render() {
     console.log(Global.headerToken);
     return <div>
+    <div align="center">
+        <img src={imgURL } alt="homepageicon" width="50%" height="50%" align="middle"/>
+    </div>
+
     <NoticeBar mode="link" onClick={() => {
       showPage(BillsDetailPage).then(result => console.log("Page result:", result));
     }}>
@@ -52,8 +73,14 @@ export default class MainHomePage extends Component {
         </Flex.Item>
 
       </Flex>
+        <WhiteSpace size="lg" />
+        <WhiteSpace size="lg" />
 
-      <div className={styles.confirmAndAlertDemo}>
+
+
+
+
+      <div hidden className={styles.confirmAndAlertDemo}>
         <Button size="small" onClick={() => {
           showConfirmModal({title: "Title", message: "Message"}).then(value => {
             showAlertModal({title: "result", message: JSON.stringify(value)});
@@ -63,9 +90,9 @@ export default class MainHomePage extends Component {
         </Button>
       </div>
 
-      <div className={styles.exampleServiceDemo}>
+      <div hidden className={styles.exampleServiceDemo}>
         <Button size="small" onClick={() => {
-          request.get('http://47.101.30.171:8080/greeting')
+          request.get('http://192.168.1.114:8080/greeting')
           //ExampleService.sendExampleRequest("abc")
             .then(value => {
 
@@ -80,7 +107,7 @@ export default class MainHomePage extends Component {
         </Button>
       </div>
 
-      <div className={styles.ttsDemo}>
+      <div hidden className={styles.ttsDemo}>
         <Button size="small" onClick={() => {
           TTSService.notifyTransferArrival(10000);
         }}>

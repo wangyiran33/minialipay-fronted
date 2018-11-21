@@ -56,10 +56,10 @@ export default class PaymentInformationPage extends Component {
                   console.log($("#IU").val());
                   console.log($("#AM").val());
                   console.log(result);
-                  //showPage(PaymentSuccessPage, {
-                    //actualPrice: $("#AM").val(),
-                    //price: $("#AM").val()
-                  //}).then(result => console.log("Page result:", result));
+                  showPage(PaymentSuccessPage, {
+                    actualPrice: $("#AM").val(),
+                    price: $("#AM").val()
+                  }).then(result => console.log("Page result:", result));
               },
               error:function(error){console.log("no result");}
           })

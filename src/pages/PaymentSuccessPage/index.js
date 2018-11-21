@@ -18,7 +18,7 @@ export default class PaymentSuccessPage extends Component {
           onClick={() => {
             this.close("123");
             showPage(PaymentSuccessPage);
-          }}>{(this.props.actualPrice / 100).toFixed(2)}元 <del>{(this.props.price / 100).toFixed(2)}元</del>
+          }}>{(this.props.actualPrice).toFixed(2)}元 <del>{(this.props.price).toFixed(2)}元</del>
         </div>}
       />
     </div>);

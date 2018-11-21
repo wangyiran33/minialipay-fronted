@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { List,InputItem,WhiteSpace } from 'antd-mobile';
-import imgURL from "../../images/user.svg";
+import imgURL from "../../images/1.jpeg";
 import $ from "jquery";
 import Global from "../../Constants/Global.js"
 import showPage from "../../util/showPage";
@@ -15,18 +15,22 @@ export default class UserPage extends Component {
 
 
   render() {
-      let uname = "hahaha";
+      let uname = "";
+      let ubalance = "";
+      let ued = "";
+      let upm = "";
       $.ajax(
           {
               type:"get",
               url:"http://47.101.4.126:80/user",
+              async:false,
               headers:{'Authorization':Global.headerToken},
               success: function (result) {
                   console.log(result);
                   uname = result.data.userEntity.username;
-                  let ubalance = result.data.userEntity.balance;
-                  let ued = result.data.userEntity.email_address;
-                  let upm = result.data.userEntity.phone_num;
+                  ubalance = result.data.userEntity.balance;
+                  ued = result.data.userEntity.email_address;
+                  upm = result.data.userEntity.phone_num;
                   console.log(uname + ubalance + ued + upm);
                   //let tokenU = result.data.tokenEntity.uid;
                   //let tokenT = result.data.tokenEntity.token;
@@ -37,22 +41,29 @@ export default class UserPage extends Component {
                   console.log(error);
               }
           }
-
-
       )
-    return (<div>
+
+    return (
+        <div>
         <div align="center">
             <img src={imgURL } alt="homepageicon" width="50%" height="50%" align="middle"/>
-          uname
         </div>
 
         <List >
             <InputItem
                 value={uname}
                 editable={false}
+            >用户名</InputItem>
+            <InputItem
+                value={ubalance}
+                editable={false}
+            >余额</InputItem>
+            <InputItem
+                value={upm}
+                editable={false}
             >手机号</InputItem>
             <InputItem
-                value="13131313@131313.com"
+                value={ued}
                 editable={false}
             >电子邮箱</InputItem>
         </List>

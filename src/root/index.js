@@ -7,7 +7,7 @@ import HomePage from "../pages/HomePage/HomePage"
 import RegisterPage from "../pages/RegisterPage/RegisterPage"
 import showPage from "../util/showPage";
 import { createForm } from 'rc-form';
-import imgURL from '../images/sjtu22.png';
+import imgURL from '../images/sjtu23.png';
 import {lockBackButton, unlockBackButton} from "../util/showPage";
 //import QrService from "../../native/QrService";
 //import showAlertModal from "../../util/showAlertModal";
@@ -17,10 +17,7 @@ import $ from "jquery";
 
 export default class LoginPage extends React.Component {
 
-    //pageTitle = "RegisterPage";
-    componentDidMount() {
-        // this.autoFocusInst.focus();
-    }
+
 
 
     render() {
@@ -76,7 +73,10 @@ export default class LoginPage extends React.Component {
                     }
 
                     }
+
                 )
+
+
 
             }}>
                 登录
@@ -88,6 +88,7 @@ export default class LoginPage extends React.Component {
             }}>
                 注册
             </Button>
+
 
         </div>)
     }
