@@ -17,15 +17,18 @@ import "../../pages/HomePage/HomePage.js"
 import Global from "../../Constants/Global.js"
 import HomePage from "../../pages/HomePage/HomePage";
 import imgURL1 from "../../images/1.jpeg";
+import imgURL2 from "../../images/2.jpeg";
+import imgURL3 from "../../images/3.jpeg";
 import imgURL from "../../images/sjtu23.png";
 import $ from "jquery";
 let numbers;
+let ttemp = {
+    data: [imgURL1, imgURL2, imgURL3],
+    imgHeight: 176,
+}
 
 export default class MainHomePage extends Component {
-    state = {
-        data: ['1', '2', '3'],
-        imgHeight: 176,
-    }
+
     //pageTitle = "RegisterPage";
     componentDidMount() {
         setTimeout(() => {
@@ -61,11 +64,11 @@ export default class MainHomePage extends Component {
     if (temp.length == 0){
         n = "Notice:还没有转账记录";
     }
-    else if(temp[0].trans_type == 0){
-      n = "Notice:您给"+temp[0].trans_obj_name+"转账"+temp[0].trans_cost+"元";
+    else if(temp[temp.length-1].trans_type == 0){
+      n = "Notice:您给"+temp[temp.length-1].trans_obj_name+"转账"+temp[temp.length-1].trans_cost+"元";
     }
     else{
-          n = "Notice:"+temp[0].trans_name+"给您转账"+temp[0].trans_cost+"元";
+          n = "Notice:"+temp[temp.length-1].trans_name+"给您转账"+temp[temp.length-1].trans_cost+"元";
       }
     return <div>
     <div align="center">
@@ -106,8 +109,36 @@ export default class MainHomePage extends Component {
         <WhiteSpace size="lg" />
         <WhiteSpace size="lg" />
 
-
-
+      <WingBlank>
+      <Carousel
+      autoplay={false}
+      infinite
+      vertical
+      beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+      afterChange={index => console.log('slide to', index)}
+      >
+      {ttemp.data.map(val => (
+          //console.log(val);
+      <a
+          key={val}
+          //{}
+          //href="http://www.alipay.com"
+          style={{ display: 'inline-block', width: '100%', height: ttemp.imgHeight }}
+      >
+      <img
+          src={val}
+          alt=""
+          style={{ width: '100%', verticalAlign: 'top' }}
+          onLoad={() => {
+          // fire window resize event to change height
+          window.dispatchEvent(new Event('resize'));
+          this.setState({ imgHeight: 'auto' });
+      }}
+          />
+          </a>
+      ))}
+  </Carousel>
+      </WingBlank>
 
 
       <div hidden className={styles.confirmAndAlertDemo}>
