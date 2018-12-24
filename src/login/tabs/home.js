@@ -3,7 +3,11 @@ import { Card,Button, Carousel, Flex, WingBlank} from "antd-mobile";
 import showPage, { lockBackButton, unlockBackButton } from "../../util/showPage";
 import PaymentSuccessPage from "../../pages/PaymentSuccessPage";
 import PaymentInformationPage from "../../pages/PaymentInformationPage";
+import QrcodeShowPage from "../../pages/QrcodePage/QrcodeShowPage.js"
+import QrcodepayPage from "../../pages/QrcodePage/Qrcodepay.js"
+import AAQrcodePage from "../../pages/QrcodePage/AAQrcode.js"
 import BillPage from "../../pages/BillsDetailPage";
+import AAQRcodepayPage from "../../pages/QrcodePage/AAQrcodepay.js"
 import showConfirmModal from "../../util/showConfirmModal";
 import showAlertModal from "../../util/showAlertModal";
 import styles from "./home.module.scss"
@@ -119,7 +123,22 @@ export default class MainHomePage extends Component {
             lockBackButton();
 
             QrService.scan().then(value => {
-              showAlertModal({title: "result", message: JSON.stringify(value)});
+                console.log(value.text.length);
+                if(value.text.includes('|'))
+                    {
+                        let combine = value.text.split('|');
+                        showPage(AAQRcodepayPage, {
+                            username: combine[0],
+                            meanpay:combine[1]
+                        }).then(result => console.log("Page result:", result));
+                    }
+                else
+                    {
+                        showPage(QrcodepayPage, {
+                            username: value.text
+                        }).then(result => console.log("Page result:", result));
+                    }
+              //showAlertModal({title: "result", message: JSON.stringify(value)});
             }).finally(() => {
               setTimeout(() => {
                 unlockBackButton();
@@ -143,12 +162,27 @@ export default class MainHomePage extends Component {
           </Flex.Item>
           <Flex.Item>
               <Button type="primary" onClick={() => {
-                  showPage(PaymentInformationPage).then(result => console.log("Page result:", result));
+                  showPage(QrcodeShowPage).then(result => console.log("Page result:", result));
               }}>
-                  <i className="fa fa-money fa-lg"/> AA收款
+                  <i className="fa fa-qrcode fa-lg"/> 收款码
               </Button>
           </Flex.Item>
-
+      </Flex>
+      <Flex>
+          <Flex.Item>
+              <Button type="primary" onClick={() => {
+                  showPage(AAQrcodePage).then(result => console.log("Page result:", result));
+              }}>
+                  <i className="fa fa-users fa-lg"/> AA收款
+              </Button>
+          </Flex.Item>
+          <Flex.Item>
+              <Button onClick={() => {
+                  alert("功能开发中，敬请期待！");
+              }}>
+                  <i className="fa fa-gamepad fa-lg"/> 游戏中心
+              </Button>
+          </Flex.Item>
       </Flex>
         <WhiteSpace size="lg" />
         <WhiteSpace size="lg" />

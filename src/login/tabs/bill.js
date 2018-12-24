@@ -16,7 +16,7 @@ export default class BillPage extends Component {
       $.ajax(
           {
               type:"post",
-              url:"http://47.101.4.126:80/bill/trans",
+              url:"http://10.162.64.234:8080/bill/trans",
               async:false,
               headers:{'Authorization':Global.headerToken},
               success: function (result) {

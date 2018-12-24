@@ -45,7 +45,7 @@ export default class PaymentInformationPage extends Component {
     <Button type="primary" onClick={() => {
           $.ajax({
               type:"post",
-              url:"http://47.101.4.126:80/transfer",
+              url:"http://10.162.64.234:8080/transfer",
               headers :{
                 'Authorization':Global.headerToken
               },

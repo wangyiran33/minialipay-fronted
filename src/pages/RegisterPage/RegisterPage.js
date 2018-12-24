@@ -75,7 +75,7 @@ export default class RegisterPage extends React.Component {
                     //showPage(HomePage).then(result => console.log("Page result:", result));
                     $.ajax({
                             type:"post",
-                            url:"http://47.101.4.126:80/user/register",
+                            url:"http://10.162.64.234:8080/user/register",
                             data: JSON.stringify({
                                 username:$("#UNN").val(),
                                 password:$("#PWW").val(),

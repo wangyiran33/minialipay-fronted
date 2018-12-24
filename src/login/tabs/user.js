@@ -33,11 +33,7 @@ export default class UserPage extends Component {
                   ued = result.data.userEntity.email_address;
                   upm = result.data.userEntity.phone_num;
                   console.log(uname + ubalance + ued + upm);
-                  //let tokenU = result.data.tokenEntity.uid;
-                  //let tokenT = result.data.tokenEntity.token;
-                  //let tokenUT = tokenU + tokenT;
-                  //console.log(uname);
-                  //showPage(HomePage,{tokenheader:tokenUT}).then(result => console.log("Page result:", result));
+
               },error:function(error){
                   console.log(error);
               }
@@ -50,14 +46,14 @@ export default class UserPage extends Component {
             <img src={imgURL } alt="homepageicon" width="50%" height="50%" align="middle"/>
         </div>
 
-        <List >
+
             <InputItem
                 value={uname}
                 editable={false}
             >用户名</InputItem>
             <InputItem
                 value={ubalance}
-                editable={false}
+                disabled
             >余额</InputItem>
             <InputItem
                 value={upm}
@@ -65,9 +61,9 @@ export default class UserPage extends Component {
             >手机号</InputItem>
             <InputItem
                 value={ued}
-                editable={false}
+                disabled
             >电子邮箱</InputItem>
-        </List>
+
 
         <Button type="primary" onClick={() => {
             this.setState()
