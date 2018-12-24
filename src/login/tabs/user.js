@@ -23,7 +23,7 @@ export default class UserPage extends Component {
       $.ajax(
           {
               type:"get",
-              url:"https://192.168.43.154:8080/user",
+              url:"http://10.162.64.234:8080/user",
               async:false,
               headers:{'Authorization':Global.headerToken},
               success: function (result) {

@@ -62,7 +62,7 @@ export default class MainHomePage extends Component {
     $.ajax(
         {
             type:"post",
-            url:"https://192.168.43.154:8080/bill/trans",
+            url:"http://10.162.64.234:8080/bill/trans",
             async:false,
             headers:{'Authorization':Global.headerToken},
             success: function (result) {

@@ -52,7 +52,7 @@ export default class LoginPage extends React.Component {
                 //console.log($("#UN").val());
                 $.ajax({
                     type:"post",
-                    url:"https://192.168.43.154:8080/tokens/login",
+                    url:"http://10.162.64.234:8080/tokens/login",
                     data: {
                         username:$("#UN").val(),
                         password:$("#PW").val()
