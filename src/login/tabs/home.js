@@ -81,6 +81,40 @@ export default class MainHomePage extends Component {
             }
         }
     )
+      let getting = {
+          type:"post",
+          url:"http://10.162.64.234:8080/notice",
+          timeout : 1000,
+          headers:{'Authorization':Global.headerToken},
+          success: function (result) {
+              console.log(result.data.content.notice_text);
+              $("#notice").text(result.data.content.notice_text);
+              $.ajax(getting);
+          },error:function(error){
+              console.log(error);
+              $.ajax(getting);
+      }};
+
+      $.ajax(getting);
+
+      function polling(){
+          $.ajax(
+              {
+                  type:"post",
+                  url:"http://10.162.64.234:8080/notice",
+                  headers:{'Authorization':Global.headerToken},
+                  success: function (result) {
+                      console.log(result.data.content.notice_text);
+                      $("#notice").text(result.data.content.notice_text);
+                      polling();
+                  },error:function(error){
+                      console.log(error);
+                      polling();
+                  }
+              }
+          )
+      }
+
     let n = "";
     if (temp.length == 0){
         n = "Notice:还没有转账记录";
@@ -100,8 +134,9 @@ export default class MainHomePage extends Component {
         <img src={imgURL } alt="homepageicon" width="50%" height="50%" align="middle"/>
     </div>
 
-    <NoticeBar mode="link" onClick={() => {
-      showPage(BillPage).then(result => console.log("Page result:", result));
+    <NoticeBar id="notice" mode="link" onClick={() => {
+
+      //showPage(BillPage).then(result => console.log("Page result:", result));
     }}>
     {n}
     </NoticeBar>
