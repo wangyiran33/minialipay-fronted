@@ -108,13 +108,13 @@ export default class MainHomePage extends Component {
                   $("#notice").text(result.data.content.notice_text);
               }
 
-              $.ajax(getting);
+              //$.ajax(getting);
           },error:function(error){
               console.log(error);
-              $.ajax(getting);
+              //$.ajax(getting);
           }};
 
-      $.ajax(getting);
+      setInterval(function() {$.ajax(getting)},3000);
 
 
 
